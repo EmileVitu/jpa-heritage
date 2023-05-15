@@ -2,8 +2,10 @@ package org.vitu.jpa.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-@Entity
+@Entity(name = "CUSTOMER")
 public class Customer extends User {
 
 	@Column(name = "ref_cust", length = 10)
@@ -27,7 +29,7 @@ public class Customer extends User {
 
 	@Override
 	public String toString() {
-		return "Customer [refCustomer=" + refCustomer + "]";
-	}
-	
+		return "Customer [refCustomer=" + refCustomer + ", getId()=" + getId() + ", getNom()=" + getNom()
+				+ ", getAge()=" + getAge() + "]";
+	}	
 }

@@ -7,8 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-@Entity
+@Entity(name = "USER")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +29,14 @@ public class User implements Serializable {
 		this.age = age;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getNom() {
 		return nom;
 	}
