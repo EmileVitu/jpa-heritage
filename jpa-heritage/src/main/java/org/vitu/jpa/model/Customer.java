@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-@Entity(name = "CUSTOMER")
+@Entity(name = "Customer")
 public class Customer extends User {
 
 	@Column(name = "ref_cust", length = 10)

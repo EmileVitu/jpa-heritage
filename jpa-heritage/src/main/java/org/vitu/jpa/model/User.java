@@ -9,8 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 
-@Entity(name = "USER")
+@Entity(name = "User")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {
 
@@ -20,6 +21,9 @@ public class User implements Serializable {
 	@Column(length = 40)
 	private String nom;
 	private int age;
+	
+	@ManyToOne
+	private Users users;
 	
 	public User() {
 	}
@@ -51,6 +55,14 @@ public class User implements Serializable {
 	
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 
 	@Override
