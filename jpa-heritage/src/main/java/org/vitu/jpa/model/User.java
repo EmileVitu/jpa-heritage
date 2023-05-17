@@ -51,9 +51,6 @@ public class User extends AbstractPersistentObject {
 
 	@Override
 	public String toString() {
-		return "User [nom=" + nom + ", age=" + age + ", users=" + users + ", toString()=" + super.toString() + "]";
+		return "User [nom=" + nom + ", age=" + age + ", toString()=" + super.toString() + "]";
 	}
-
-	
-	
 }

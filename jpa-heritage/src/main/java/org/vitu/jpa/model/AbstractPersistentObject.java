@@ -64,5 +64,4 @@ public abstract class AbstractPersistentObject implements Serializable {
 		return "AbstractPersistentObject [id=" + id + ", creationDate=" + creationDate + ", lastModificationDate="
 				+ lastModificationDate + "]";
 	}
-	
 }

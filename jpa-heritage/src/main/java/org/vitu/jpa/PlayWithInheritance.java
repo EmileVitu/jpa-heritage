@@ -36,5 +36,4 @@ public class PlayWithInheritance {
 		System.out.println("Moussa = " + moussa);
 		System.out.println("BigFella = " + bigFella);
 	}
-
 }

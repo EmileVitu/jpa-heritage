@@ -12,16 +12,21 @@ public class FunWithInheritance {
 	public static void main(String[] args) {
 		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tp-jpa-validate");
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityManager entityManager1 = entityManagerFactory.createEntityManager();
+		EntityManager entityManager2 = entityManagerFactory.createEntityManager();
 	
-		User user1 = entityManager.find(User.class, 1);
-		System.out.println("User = " + user1);		
+		User user1 = entityManager1.find(User.class, 1);
+		System.out.println("User = " + user1);
 		
-		User user2 = entityManager.find(User.class, 2);
-		System.out.println("User = " + user2);
+		entityManager2.getTransaction().begin();
+		User user3 = entityManager2.merge(user1);
+		user3.setAge(1000);
+		entityManager2.getTransaction().commit();
 		
-		Users users = entityManager.find(Users.class, 1);
-		System.out.println("Users = " + users);
+//		User user2 = entityManager.find(User.class, 2);
+//		System.out.println("User = " + user2);
+		
+//		Users users = entityManager.find(Users.class, 1);
+//		System.out.println("Users = " + users);
 	}
-
 }
