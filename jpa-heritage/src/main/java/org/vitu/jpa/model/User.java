@@ -1,23 +1,15 @@
 package org.vitu.jpa.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "User")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User implements Serializable {
+public class User extends AbstractPersistentObject {
 
-	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int id;
-	
 	@Column(length = 40)
 	private String nom;
 	private int age;
@@ -31,14 +23,6 @@ public class User implements Serializable {
 	public User(String nom, int age) {
 		this.nom = nom;
 		this.age = age;
-	}
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getNom() {
@@ -67,7 +51,9 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", nom=" + nom + ", age=" + age + "]";
+		return "User [nom=" + nom + ", age=" + age + ", users=" + users + ", toString()=" + super.toString() + "]";
 	}
+
+	
 	
 }

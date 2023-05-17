@@ -1,31 +1,16 @@
 package org.vitu.jpa.model;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Users implements Serializable {
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+public class Users extends AbstractPersistentObject {
 
 	@OneToMany(mappedBy = "users")
 	private Set<User> users = new HashSet<>();
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 	
 	public Set<User> getUsers() {
 		return new HashSet<User>();
@@ -41,7 +26,7 @@ public class Users implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", users=" + users + "]";
+		return "Users [id=" + getId() + ", users=" + users + "]";
 	}
 	
 }
