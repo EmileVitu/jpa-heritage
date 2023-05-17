@@ -29,7 +29,6 @@ public class Customer extends User {
 
 	@Override
 	public String toString() {
-		return "Customer [refCustomer=" + refCustomer + ", getId()=" + getId() + ", getNom()=" + getNom()
-				+ ", getAge()=" + getAge() + "]";
+		return "Customer [refCustomer=" + refCustomer + ", toString()=" + super.toString() + "]";
 	}	
 }
