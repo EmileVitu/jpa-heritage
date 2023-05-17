@@ -27,7 +27,7 @@
 			
 			<!-- validate | update | create | create-drop -->
 			<property name="hibernate.hbm2ddl.auto" 
-					  value="validate" />
+					  value="create" />
 			
 			<!-- https://www.youtube.com/watch?v=FjmuClV40A4 -->
 			<property name="hibernate.show_sql" value="false" />
@@ -38,7 +38,7 @@
 	
 	</persistence-unit>
 	
-	<persistence-unit name="tp-jpa-validate" transaction-type="RESOURCE_LOCAL">
+ 	<persistence-unit name="tp-jpa-validate" transaction-type="RESOURCE_LOCAL">
 	
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
@@ -64,6 +64,49 @@
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.use_sql_comments" value="false" />
+			
+		</properties>
+	
+	</persistence-unit>
+	
+	<persistence-unit name="tp-jpa-eclipselink-create" transaction-type="RESOURCE_LOCAL">
+	
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		
+		<class>org.vitu.jpa.model.Customer</class>
+		<class>org.vitu.jpa.model.User</class>
+		<class>org.vitu.jpa.model.Users</class>
+		
+		<properties>
+			
+			<property name="javax.persistence.jdbc.driver" 
+					  value="com.mysql.cj.jdbc.Driver"/>
+					  
+			<property name="javax.persistence.jdbc.url"  
+					  value="jdbc:mysql://localhost:3306/db_jpa"/>
+					  
+			<property name="javax.persistence.jdbc.user"  
+					  value="jpa-user"/>
+					  
+			<property name="javax.persistence.jdbc.password"  
+					  value="user"/>
+			
+			<!-- create-tables | create-or-extend-tables | drop-and-create-tables | none -->
+			<property name="eclipselink.ddl-generation"
+					  value="create-or-extend-tables"/>
+			
+			<property name="eclipselink.create-ddl-jdbc-file-name"
+					  value="sql/create-schema.sql"/>
+					  
+			<property name="eclipselink.drop-ddl-jdbc-file-name"
+					  value="sql/drom-schema.sql"/>
+					  
+			<!-- database | file | both -->
+			<property name="eclipselink.ddl-generation.output-mode"
+					  value="both"/>
+					  
+			<property name="eclipselink.target-database"
+					  value="MySQL"/>
 			
 		</properties>
 	

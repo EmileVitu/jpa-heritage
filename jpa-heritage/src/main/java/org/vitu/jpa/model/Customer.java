@@ -8,7 +8,7 @@ import javax.persistence.InheritanceType;
 @Entity(name = "Customer")
 public class Customer extends User {
 
-	@Column(name = "ref_cust", length = 10)
+	@Column(name = "ref_cust", length = 10, nullable = false)
 	private String refCustomer;
 	
 	public Customer() {

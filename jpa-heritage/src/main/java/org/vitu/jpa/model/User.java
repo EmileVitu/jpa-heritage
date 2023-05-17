@@ -12,10 +12,10 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "User")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	
 	@Column(length = 40)
