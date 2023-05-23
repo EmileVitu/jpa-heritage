@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.eclipse.persistence.internal.sessions.cdi.EntityListenerInjectionManagerImpl;
 import org.vitu.jpa.model.User;
 
 public class PlayWithRefresh {
@@ -25,20 +26,26 @@ public class PlayWithRefresh {
 		System.out.println("u1 = " + user1);
 		System.out.println("u2 = " + user2);
 		
+		entityManager2.detach(user2);
+		
 		entityManager1.getTransaction().begin();
 		System.out.println("U1 à 25");
 		user1.setAge(25);
 		entityManager1.getTransaction().commit();
 		
-		entityManager2.refresh(user2);
+//		entityManager2.refresh(user2);
 		
 		System.out.println("u1 = " + user1);
 		System.out.println("u2 = " + user2);
+		
+		entityManager2.merge(user2);
 		
 		entityManager2.getTransaction().begin();
 		System.out.println("U2 à 40");
 		user2.setAge(40);
 		entityManager2.getTransaction().commit();
+		
+//		entityManager1.refresh(user1);
 		
 		System.out.println("u1 = " + user1);
 		System.out.println("u2 = " + user2);
